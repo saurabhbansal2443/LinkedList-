@@ -121,8 +121,13 @@ class Linked {
             return ele;
         } else {
             Node curr = this.head;
-            for (int i = 0; i <size - 2; i++) {
-                curr = curr.next;
+            // for (int i = 0; i <size - 2; i++) {
+            //     curr = curr.next;
+            // }
+            int idx = size-2;
+            while(idx>0){
+                curr=curr.next;
+                idx--;
             }
             int ele = tail.data;
             curr.next = null;
@@ -131,6 +136,27 @@ class Linked {
 
             return ele;
 
+        }
+    }
+
+    public int removeAt(int idx){
+        if(idx<0 || idx>=size){
+            System.out.println("Invalid Index");
+            return -1;
+        }else if( idx==0){
+            return this.removeFirst();
+        }else if(idx==this.size-1){
+            return this.removeLast();
+        }else{
+            Node curr=head;
+            while(idx>1){
+                curr=curr.next;
+                idx--;
+            }
+            int ele =curr.next.data;
+            curr.next=curr.next.next;
+            size--;
+            return ele;
         }
     }
 }
