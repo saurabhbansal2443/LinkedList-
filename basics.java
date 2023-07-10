@@ -4,12 +4,15 @@ public class basics{
 
         //System.out.println(list.size);
 
-        // list.addFirst(10);
-        // list.addFirst(20);
-        // list.addFirst(30);
+        list.addFirst(10);
+        list.addFirst(20);
+        list.addFirst(30);
 
         list.addLast(40);
         list.addLast(50);
+
+        list.addAt(900, 2);
+        list.addAt(700, 3);
 
         list.display();
 
@@ -71,5 +74,29 @@ class Linked{
             this.tail=temp;
         }
         this.size++;
+    }
+
+    public void addAt(int val , int idx){
+        if(idx<0 || idx>size){
+            System.out.println("InvalidIndex");
+
+        }else if(idx==0){
+            this.addFirst(val);
+        }else if(idx==this.size){
+            this.addLast(val);
+        }else{
+            Node temp = new Node(val);
+            Node curr=this.head;
+            while(idx>1){
+                curr=curr.next;
+                idx--;
+            }
+
+            Node nbr = curr.next;
+            curr.next=temp;
+            temp.next=nbr;
+            this.size++;
+
+        }
     }
 }
