@@ -2,12 +2,15 @@ public class basics {
     public static void main(String[] args) {
         Linked list = new Linked();
 
-       list.addLast(30);
-       list.addLast(40);
-       list.addLast(50);
-      
-        System.out.println(list.removeLast());
-       list.display();
+        list.addLast(30);
+        list.addLast(40);
+        list.addLast(50);
+        list.addLast(60);
+        list.addLast(70);
+        list.addLast(80);
+
+          System.out.println(list.getAt(9));
+        list.display();
     }
 }
 
@@ -122,11 +125,11 @@ class Linked {
         } else {
             Node curr = this.head;
             // for (int i = 0; i <size - 2; i++) {
-            //     curr = curr.next;
+            // curr = curr.next;
             // }
-            int idx = size-2;
-            while(idx>0){
-                curr=curr.next;
+            int idx = size - 2;
+            while (idx > 0) {
+                curr = curr.next;
                 idx--;
             }
             int ele = tail.data;
@@ -139,24 +142,63 @@ class Linked {
         }
     }
 
-    public int removeAt(int idx){
-        if(idx<0 || idx>=size){
+    public int removeAt(int idx) {
+        if (idx < 0 || idx >= size) {
             System.out.println("Invalid Index");
             return -1;
-        }else if( idx==0){
+        } else if (idx == 0) {
             return this.removeFirst();
-        }else if(idx==this.size-1){
+        } else if (idx == this.size - 1) {
             return this.removeLast();
+        } else {
+            Node curr = head;
+            while (idx > 1) {
+                curr = curr.next;
+                idx--;
+            }
+            int ele = curr.next.data;
+            curr.next = curr.next.next;
+            size--;
+            return ele;
+        }
+    }
+
+    public int getFirst() {
+        if (this.size == 0) {
+            System.out.println("List is empty");
+            return -1;
+        } else {
+            return head.data;
+        }
+    }
+
+    public int getLast() {
+        if (this.size == 0) {
+            System.out.println("List is empty");
+            return -1;
+        } else {
+            return tail.data;
+        }
+    }
+
+    public int getAt(int idx) {
+         if(idx<0 || idx>=size){
+            System.out.println("Invalid Index");
+            return -1;
+         }else if (this.size == 0) {
+            System.out.println("List is empty");
+            return -1;
+        } else if (idx == size-1)  {
+            return tail.data;
         }else{
-            Node curr=head;
-            while(idx>1){
+            Node curr = this.head ;
+
+            while(idx>0){
                 curr=curr.next;
                 idx--;
             }
-            int ele =curr.next.data;
-            curr.next=curr.next.next;
-            size--;
-            return ele;
+
+            return curr.data;
         }
     }
 }
