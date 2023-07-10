@@ -4,9 +4,12 @@ public class basics{
 
         //System.out.println(list.size);
 
-        list.addFirst(10);
-        list.addFirst(20);
-        list.addFirst(30);
+        // list.addFirst(10);
+        // list.addFirst(20);
+        // list.addFirst(30);
+
+        list.addLast(40);
+        list.addLast(50);
 
         list.display();
 
@@ -56,5 +59,17 @@ class Linked{
             temp=temp.next;
         }
         System.out.println();
+    }
+
+    public void addLast(int val){
+        Node temp = new Node(val);
+
+        if(this.size==0){
+            this.head=this.tail=temp;
+        }else{
+            this.tail.next=temp;
+            this.tail=temp;
+        }
+        this.size++;
     }
 }
