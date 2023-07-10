@@ -11,8 +11,11 @@ public class basics{
         list.addLast(40);
         list.addLast(50);
 
-        list.addAt(900, 2);
-        list.addAt(700, 3);
+        // list.addAt(900, 2);
+        // list.addAt(700, 3);
+
+        list.removeFirst();
+        list.removeFirst();
 
         list.display();
 
@@ -97,6 +100,18 @@ class Linked{
             temp.next=nbr;
             this.size++;
 
+        }
+    }
+
+    public int removeFirst(){
+        if(this.size==0){
+            System.out.println("List is empty");
+            return -1;
+        }else{
+            int ele = head.data;
+            this.head=this.head.next;
+            this.size--;
+            return ele;
         }
     }
 }
