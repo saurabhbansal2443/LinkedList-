@@ -1,6 +1,15 @@
 public class basics{
     public static void main(String[] args) {
-        
+        Linked list=new Linked();
+
+        //System.out.println(list.size);
+
+        list.addFirst(10);
+        list.addFirst(20);
+        list.addFirst(30);
+
+        list.display();
+
     }
 }
 
@@ -37,5 +46,15 @@ class Linked{
         }
 
         this.size++;
+    }
+
+    public void display(){
+        Node temp = this.head;
+
+        while(temp!=null){
+            System.out.print(temp.data + "  ");
+            temp=temp.next;
+        }
+        System.out.println();
     }
 }
