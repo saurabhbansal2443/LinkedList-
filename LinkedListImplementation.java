@@ -1,4 +1,4 @@
-public class basics {
+public class LinkedListImplementation {
     public static void main(String[] args) {
         Linked list = new Linked();
 
